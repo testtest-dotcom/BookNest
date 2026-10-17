@@ -1,0 +1,4 @@
+export const API_BASE='https://openlibrary.org';
+export class ApiError extends Error{constructor(message,status=0){super(message);this.name='ApiError';this.status=status;}}
+export async function request(path,params={},signal){const url=new URL(path,API_BASE);const query=new URLSearchParams(params);url.search=query.toString();const response=await fetch(url,{signal,headers:{Accept:'application/json'}});if(!response.ok)throw new ApiError(`Ошибка HTTP ${response.status}`,response.status);return response.json();}
+export function getErrorMessage(error){if(error instanceof ApiError){if(error.status>=500)return 'На сервере произошла ошибка (5xx). Повторите попытку позже.';if(error.status>=400)return `Запрос отклонён сервером (${error.status}). Проверьте данные или адрес.`;}return 'Нет соединения с сетью или запрос заблокирован. Проверьте интернет.';}

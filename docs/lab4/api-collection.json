@@ -1,0 +1,29 @@
+{
+  "info": {
+    "name": "BookNest Open Library LAB4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Search python",
+      "request": {
+        "method": "GET",
+        "url": "https://openlibrary.org/search.json?q=python&limit=20&offset=0"
+      }
+    },
+    {
+      "name": "Book details",
+      "request": {
+        "method": "GET",
+        "url": "https://openlibrary.org/works/OL45883W.json"
+      }
+    },
+    {
+      "name": "Author",
+      "request": {
+        "method": "GET",
+        "url": "https://openlibrary.org/authors/OL23919A.json"
+      }
+    }
+  ]
+}
